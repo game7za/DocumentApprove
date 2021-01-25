@@ -1,13 +1,19 @@
 const express = require("express");
 const ejs = require("ejs")
 const session = require('express-session')
-const PORT = 8000;
+var mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+
+const PORT = 8080;
 
 //middleware
 const app = express();
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({extended: false}))
+app.use(bodyParser.json());
 
+//MongoDB
+const db = require("./db")
 
 //log
 var currentUser = []
@@ -26,6 +32,9 @@ function authenResult(req,res,next){
         approvelog[currentUser] = 1
         console.log(currentUser)
         console.log(approvelog)
+        if(approvelog['user1']==1 & approvelog['user2']==1 & approvelog['user3']==1){
+            console.log("All Users has approved. Email will be sent to: napat.s@swiftdynamics.co.th ")
+        }
         return next()
     }
     else{
@@ -67,4 +76,5 @@ app.get("/doc",function(req,res){
 app.post("/doc",approveResult,function(req,res){
 })
 
-app.listen(PORT, console.log('Listen on Port:8000'))
+app.listen(PORT, console.log('Listen on Port:8080'))
+
