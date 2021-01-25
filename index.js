@@ -15,8 +15,12 @@ app.use(bodyParser.json());
 //MongoDB
 const db = require("./db")
 
+//Email
+const mail = require("./mail")
+
 //log
 var currentUser = []
+var resetlog = {user1 : 0 , user2: 0, user3: 0 };
 var approvelog = {user1 : 0 , user2: 0, user3: 0 }
 
 //Authentication
@@ -33,7 +37,10 @@ function authenResult(req,res,next){
         console.log(currentUser)
         console.log(approvelog)
         if(approvelog['user1']==1 & approvelog['user2']==1 & approvelog['user3']==1){
+            console.log()
             console.log("All Users has approved. Email will be sent to: napat.s@swiftdynamics.co.th ")
+            mail.sendMail()
+            approvelog = resetlog; //reset approve log
         }
         return next()
     }
