@@ -10,7 +10,7 @@ var transporter = nodemailer.createTransport({
   
 var mailOptions = {
 from: 'wongsathornthongrod@gmail.com',
-to: 'thongrodw@gmail.com, napat.s@swiftdynamics.co.th',
+to: 'thongrodw@gmail.com',
 subject: 'Document Sucessfully Approved',
 text: 'All Users has approved the document'
 };
