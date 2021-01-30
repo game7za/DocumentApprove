@@ -8,6 +8,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(mongo_uri, { useNewUrlParser: true }).then(
   () => {
     console.log("[success] task 2 : connected to the database ");
+    console.log();
   },
   error => {
     console.log("[failed] task 2 " + error);
