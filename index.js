@@ -13,9 +13,6 @@ app.set('view-engine', 'ejs')
 app.use(express.urlencoded({extended: false}))
 app.use(bodyParser.json());
 
-//MongoDB
-const db = require("./db")
-
 //Authentication
 const authen = require('./authen');
 var authenResult = authen.result

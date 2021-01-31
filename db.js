@@ -16,3 +16,10 @@ mongoose.connect(mongo_uri, { useNewUrlParser: true }).then(
   }
 );
 
+//user information
+exports.userData = 
+[
+    {username: "user1", password: "user1"},
+    {username: "user2", password: "user2"},
+    {username: "user3", password: "user3"}
+]

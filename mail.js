@@ -22,6 +22,7 @@ exports.sendMail = function(){
             console.log(error);
         } else {
             console.log('Email sent sucessfully!' );
+            console.log();
         }
         });
 }

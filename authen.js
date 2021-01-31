@@ -1,19 +1,19 @@
 const express = require('express');
-const mail = require("./mail");
+const { get } = require('mongoose');
+const mail = require('./mail');
+const db = require("./db");
 
-//user information
-const userData = 
-[
-    {username: "user1", password: "user1"},
-    {username: "user2", password: "user2"},
-    {username: "user3", password: "user3"}
-]
+//Get userdata from database for Authentication
+userData = db.userData
 
-//log
+//loging status
 var currentUser 
+var loginStatus
+
+//Approve Status
 const resetlog = {user1 : 0 , user2: 0, user3: 0 }
 var approvelog = {user1 : 0 , user2: 0, user3: 0 }
-var loginStatus 
+
 
 function checkAuthen(username,password){
     var user_result = userData.filter(obj => {
